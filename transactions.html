@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaksi - Kailiya Books</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Kailiya Books</h1>
+</header>
+
+<nav class="navbar">
+    <a href="home.html">Beranda</a>
+    <a href="transactions.html" class="active">Transaksi</a>
+    <a href="profile.html">Profil</a>
+    <a href="login.html">Logout</a>
+</nav>
+
+<div class="container">
+    <h2>Transaksi Pembelian Buku</h2>
+    
+    <form id="transaction-form">
+        <label for="book-title">Judul Buku:</label>
+        <input type="text" id="book-title" name="book-title" required>
+
+        <label for="author">Penulis:</label>
+        <input type="text" id="author" name="author" required>
+
+        <label for="borrower-name">Nama Pembeli:</label>
+        <input type="text" id="borrower-name" name="borrower-name" required>
+
+        <label for="borrow-date">Tanggal Pembelian:</label>
+        <input type="date" id="borrow-date" name="borrow-date" required>
+
+        <button type="submit">Beli Buku</button>
+    </form>
+
+    <h3>Daftar Transaksi Pembelian</h3>
+    <ul id="transaction-list">
+        <!-- Daftar transaksi akan ditambahkan di sini -->
+    </ul>
+</div>
+
+<footer>
+    <p>&copy; 2024 Aplikasi Perpustakaan. Semua hak dilindungi.</p>
+</footer>
+
+<script>
+    document.getElementById('transaction-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Mencegah pengiriman form
+
+        // Mengambil data dari form
+        const bookTitle = document.getElementById('book-title').value;
+        const author = document.getElementById('author').value;
+        const borrowerName = document.getElementById('borrower-name').value;
+        const borrowDate = document.getElementById('borrow-date').value;
+
+        // Menambahkan transaksi ke daftar
+        const transactionList = document.getElementById('transaction-list');
+        const listItem = document.createElement('li');
+        listItem.textContent = `Buku: ${bookTitle}, Penulis: ${author}, Pembeli: ${borrowerName}, Tanggal Pembelian: ${borrowDate}`;
+        transactionList.appendChild(listItem);
+
+        // Mengosongkan form setelah pengiriman
+        document.getElementById('transaction-form').reset();
+    });
+</script>
+
+</body>
+</html>
